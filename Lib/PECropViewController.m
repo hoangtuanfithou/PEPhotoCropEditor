@@ -26,7 +26,8 @@
     static NSBundle *bundle = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"PEPhotoCropEditor" withExtension:@"bundle"];
+        //NSURL *bundleURL = [[NSBundle mainBundle] URLForResource:@"PEPhotoCropEditor" withExtension:@"bundle"]; this line make crash when pods use_frameworks!
+        NSURL *bundleURL = [[NSBundle bundleForClass:[PECropViewController class]] URLForResource:@"PEPhotoCropEditor" withExtension:@"bundle"];
         bundle = [[NSBundle alloc] initWithURL:bundleURL];
     });
     
